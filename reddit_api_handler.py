@@ -1,12 +1,4 @@
-import praw
-
-# Static credentials variables
-CLIENT_ID = 'vXaDMPsCx7IV-Nu97QBKcg'
-CLIENT_SECRET = 'xf2hv2gDIae2Ljbi7Jn7sSqU-HDoSg'
-USER_AGENT = 'post-webscrapper'
-
-# Build reddit object
-reddit = praw.Reddit(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, user_agent=USER_AGENT)
+from config import Scrapper
 
 # Local variables
 subreddit = 'MachineLearning'  # To be passed via. user interface
@@ -14,9 +6,12 @@ post_limit = 10  # Static list count
 show_top_comments = False
 number_of_comments = 5
 
+scrapper = Scrapper()
+reddit = scrapper.initialize_praw()
 
 def get_post(subreddit):
     """
+    Get posts under subbreddit using praw
     @param subreddit: Name of subreddit
     @return: Post details in JSON
     """
@@ -30,3 +25,12 @@ def get_post(subreddit):
         posts.append(post_detail)
     return {'posts': posts}
 
+
+def show_post_lists(count, subreddit, type):
+    """
+    Get top treding post using Beautifulsoap web scrapper
+    @param count: Count of the posts
+    @param subreddit:
+    @param type: Hot, New, Best etc
+    @return:
+    """
