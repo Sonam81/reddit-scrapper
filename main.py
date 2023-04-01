@@ -2,6 +2,7 @@
 from reddit_api_handler import get_post, show_post_lists
 from fastapi import FastAPI, Request, Body
 from fastapi.middleware.cors import CORSMiddleware
+from scrapper import list_popular
 
 # To run server
 # uvicorn main:app --reload
@@ -31,4 +32,10 @@ async def get_request(item_id):
 async def show_posts(count: int = Body(...), subreddit: str = Body(...), type: str = Body(...)):
     return show_post_lists(count, subreddit, type)
 
+@app.get("/popular/{type}", status_code=201)
+async def show_popular(type):
+    print(type)
+    scrap_url = 'https://www.reddit.com/r/popular/'
+    scrap_url = scrap_url + type
+    return list_popular(scrap_url)
 
