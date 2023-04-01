@@ -1,10 +1,23 @@
 # Import libraries and user defined functions
 from reddit_api_handler import get_post, show_post_lists
 from fastapi import FastAPI, Request, Body
-from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+
+# To run server
+# uvicorn main:app --reload
 
 # Build API Interface using FastAPI
 app = FastAPI()
+origins = [
+    "*",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():

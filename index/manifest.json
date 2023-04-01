@@ -1,0 +1,15 @@
+{
+    "name" : "Trending Top News",
+    "version":"1.0.0",
+    "description": "It shows the top trending reddit news",
+    "manifest_version": 3,
+    "author": "Rabin Khadka",
+    "action":{
+        "default_popup": "index.html",
+        "default_title":"Trending Top News",
+        "permissions": "http://127.0.0.1:8000/subreddit/pics"
+    }
+
+
+
+}
