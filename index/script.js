@@ -1,7 +1,12 @@
-async function fetchData() {
-    const res=await fetch ('http://127.0.0.1:8000/subreddit/pics');
+async function fetchData(subreddit) {
+
+//    Build fetch url and pass to the API for response
+    fetch_url = 'http://127.0.0.1:8000/subreddit/' + subreddit
+    const res=await fetch (fetch_url);
     const record=await res.json();
     news_list_ul = document.getElementById('news_list');
+    news_list_ul.innerHTML = "";
+
     for (i = 0; i < record.posts.length; i++) {
         li = document.createElement('li')
         a = document.createElement('a');
@@ -12,7 +17,7 @@ async function fetchData() {
         news_list_ul.appendChild(li);
     }
 }
-fetchData();
+fetchData(subreddit='worldnews');
 
 
 //var a = document.createElement("a");
