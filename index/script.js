@@ -1,7 +1,7 @@
-async function fetchData(subreddit) {
+async function fetchData(pre_text, post_text) {
 
 //    Build fetch url and pass to the API for response
-    fetch_url = 'http://127.0.0.1:8000/subreddit/' + subreddit
+    fetch_url = 'http://127.0.0.1:8000/' + pre_text + ''/' + post_text
     const res=await fetch (fetch_url);
     const record=await res.json();
     news_list_ul = document.getElementById('news_list');
