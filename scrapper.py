@@ -34,6 +34,6 @@ def list_popular(url):
             'permalink': post_permalink
         }
         posts.append(post_detail)
-        print(post_title, post_permalink)
+        print(post_title, post_permalink,"permalink")
     return posts
 
